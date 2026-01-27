@@ -1,0 +1,47 @@
+package com.example.zteam.list
+
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+
+
+@Composable
+fun GameListScreen(
+    viewModel: ListViewModel,
+    onGameClick: (Int) -> Unit,
+    onSearchClick: () -> Unit
+) {
+
+    val popularGames = viewModel.games.value
+    val hotNewGames = viewModel.hotNewGames.value
+    val genres = viewModel.genres.value
+    val selectedGenreSlug = viewModel.selectedGenreSlug.value
+
+    Scaffold(
+        topBar = {
+            SearchTopBar(
+                onSearchClick = onSearchClick
+            )
+        }
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = Modifier
+                .padding(paddingValues)
+        ) {
+            item {
+                PopularGamesSection(hotNewGames, onGameClick)
+            }
+
+            item {
+                CategorySection(viewModel, genres, selectedGenreSlug)
+
+            }
+
+            item {
+                GameListSection(popularGames, onGameClick)
+            }
+        }
+    }
+}
