@@ -30,7 +30,8 @@ fun AppNavHost(navController: NavHostController) {
                 onGameClick = { gameId ->
                     navController.navigate("game_details/$gameId")
                 },
-                onSearchClick = { navController.navigate("game_search") }
+                onSearchClick = { navController.navigate("game_search") },
+                onInfoClick = { /* Если на экране поиска тоже нужен диалог, можно добавить логику и сюда */ }
             )
         }
         composable(

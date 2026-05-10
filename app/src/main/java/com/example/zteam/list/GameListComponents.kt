@@ -20,6 +20,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Help
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -39,7 +40,8 @@ import com.example.zteam.data.Genre
 
 @Composable
 fun SearchTopBar(
-    onSearchClick: () -> Unit
+    onSearchClick: () -> Unit,
+    onInfoClick: () -> Unit
 ) {
     TopAppBar(
         backgroundColor = MaterialTheme.colorScheme.surface,
@@ -61,12 +63,22 @@ fun SearchTopBar(
                     .padding(vertical = 4.dp)
             )
 
-            IconButton(onClick = onSearchClick) {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = "Search",
-                    tint = Color.White
-                )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                IconButton(onClick = onInfoClick) {
+                    Icon(
+                        imageVector = Icons.Default.Help,
+                        contentDescription = "Help",
+                        tint = Color.White
+                    )
+                }
+
+                IconButton(onClick = onSearchClick) {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = "Search",
+                        tint = Color.White
+                    )
+                }
             }
         }
     }

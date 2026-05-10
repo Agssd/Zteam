@@ -42,7 +42,7 @@ object RetrofitInstance {
     init{
         sslContext.init(null, trustAllCerts, java.security.SecureRandom())
     }
-    // Create an ssl socket factory with our all-trusting manager
+
     val sslSocketFactory = sslContext.socketFactory
     val json = Json {
         ignoreUnknownKeys = true // чтобы не падало на лишних полях

@@ -14,7 +14,7 @@ import com.example.zteam.database.HotNewGameDao
     exportSchema = false
 )
 @TypeConverters(GenreListConverter::class)
-abstract class GameDatabase : RoomDatabase() {
+abstract class  GameDatabase : RoomDatabase() {
     abstract fun gameDao(): GameDao
     abstract fun genreDao(): GenreDao
     abstract fun hotNewGameDao(): HotNewGameDao
